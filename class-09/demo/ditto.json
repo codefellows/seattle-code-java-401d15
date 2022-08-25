@@ -1,0 +1,12 @@
+{
+  "name": "ditto",
+  "id": 132,
+  "types": [
+    {
+      "slot": 1,
+      "type": {
+        "name": "normal"
+      }
+    }
+  ]
+}
