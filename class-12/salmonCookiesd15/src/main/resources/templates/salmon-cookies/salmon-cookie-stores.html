@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Salmon COokies Store</title>
+</head>
+<body>
+<ul th:each="salmonStore : ${stores}">
+    <li th:text="'Store name: ' + ${salmonStore.name}"></li>
+    <li th:text="'Average cookies per day: '+ ${salmonStore.averageCookiesPerDay}"></li>
+</ul>
+
+<form action="/" method="post">
+    <fieldset>
+        <legend>Add Salmon Cookies Store</legend>
+        <label> Store name</label>
+        <input type="text" name="name"/>
+        <label>Average Cookies Per Day</label>
+        <input type="text" name="averageCookiesPerDay">
+        <input type="submit" value="Add Store">
+    </fieldset>
+</form>
+
+
+</body>
+</html>
