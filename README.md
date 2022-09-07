@@ -10,6 +10,10 @@ Students will use IntelliJ IDEA and Android Studio to create Java applications. 
 
 The course focuses on fundamental computer science concepts like object-oriented programming, advanced data structures and algorithms, Big O asymptotic analysis, and the structure of statically typed languages.
 
+## Class resources
+* [Canvas](https://canvas.instructure.com/courses/5047790)
+* [Miro Whiteboard](https://miro.com/app/board/uXjVPeiqTVg=/?share_link_id=72073237056)
+
 ## Schedule example
 
 |Time   | Monday  | Tuesday |Wednesday|Thursday |Friday|
