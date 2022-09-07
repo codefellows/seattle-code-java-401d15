@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h3 th:if="${username}" th:text="'Current User from fragment 1: ' + ${username}"></h3>
+<nav th:if="${username}" th:fragment="site-user" th:text="'Current User from fragment 2: ' + ${username}"></nav>
+</body>
+</html>
