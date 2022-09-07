@@ -16,7 +16,7 @@ The course focuses on fundamental computer science concepts like object-oriented
 |-------|---------|---------|---------|---------|--------|
 |9am-12:30pm|Lecture 1|Lecture 2|Lecture 3|Lecture 4|Lecture 5|
 |12:30pm-1:30pm|Lunch    | Lunch   | Lunch   |Lunch    |Lunch    |
-|1:30pm-2:30pm|DS&A 1   |DS&A 2   |DS&A 3   |DS&A 4   |DS&A 5   |
+|1:30pm-2:30pm|CC 1   |CC 2   |CC 3   |CC 4   |DS&A   |
 |2:30pm - 6pm| Lab 1 | Lab 2 journal 1| Lab 2, journal 2|Lab 3, journal 3|Lab 4, journal 4|
 |after 6pm|Finish DS&A, readings for Lecture 2|Finish DS&A, readings for Lecture 3|Finish DS&A, readings for Lecture 4|Finish DS&A, readings for Lecture 5|Finish DS&A over weekend, readings for lecture 6|
 
