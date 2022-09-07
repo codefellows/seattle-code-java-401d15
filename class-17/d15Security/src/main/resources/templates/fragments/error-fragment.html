@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<nav th:if="${errorMessage}" class="errorMessage" th:fragment="user-error" th:text="'Error: ' + ${errorMessage}"></nav>
+</body>
+</html>
