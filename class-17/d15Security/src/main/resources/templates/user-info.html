@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div th:replace="/fragments/nav-header :: site-user"></div>
+<h1 th:text="${'User info for user id: ' + dbUserId}"></h1>
+<div th:replace="/fragments/error-fragment :: user-error"></div>
+
+
+<form th:action="${'/users/' + dbUserId}" th:method="PUT">
+    <label>Username</label>
+    <input th:value="${dbUserUsername}" type="text" name="username" th:disabled="${!username.equals(dbUserUsername)}">
+    <label>Nickname</label>
+    <input th:value="${dbUserNickname}" type="text" name="nickname" th:disabled="${!username.equals(dbUserUsername)}">
+    <input th:if="${username.equals(dbUserUsername)}" type="submit" value="Edit User info">
+</form>
+
+<div th:text="${'testDate: ' + #temporals.format(testDate, 'yyyy-MM-dd HH:mm:ss')}"></div>
+</body>
+</html>
