@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Zork-demo</string>
+    <string name="hello_lemi">Hello Lemi!</string>
+    <string name="what_s_your_name">What\'s your name?</string>
+    <string name="submit">Submit</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>
