@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "d15zorkdemo",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/InstructorWhtie/Documents/code-fellows/401_class/seattle-code-java-401d15/class-31/Zorkdemo/amplify/backend/api/d15zorkdemo/schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7
+    }
+  }
+}
