@@ -26,3 +26,36 @@ subscription OnDeleteTodo {
     updatedAt
   }
 }
+subscription OnCreatePokeman {
+  onCreatePokeman {
+    id
+    name
+    type
+    height
+    dateCreated
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdatePokeman {
+  onUpdatePokeman {
+    id
+    name
+    type
+    height
+    dateCreated
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeletePokeman {
+  onDeletePokeman {
+    id
+    name
+    type
+    height
+    dateCreated
+    createdAt
+    updatedAt
+  }
+}

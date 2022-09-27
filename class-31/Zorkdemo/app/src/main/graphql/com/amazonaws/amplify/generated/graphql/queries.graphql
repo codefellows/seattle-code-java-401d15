@@ -24,3 +24,32 @@ query ListTodos(
     nextToken
   }
 }
+query GetPokeman($id: ID!) {
+  getPokeman(id: $id) {
+    id
+    name
+    type
+    height
+    dateCreated
+    createdAt
+    updatedAt
+  }
+}
+query ListPokemans(
+  $filter: ModelPokemanFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listPokemans(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      type
+      height
+      dateCreated
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}

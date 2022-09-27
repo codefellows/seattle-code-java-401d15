@@ -35,3 +35,45 @@ mutation DeleteTodo(
     updatedAt
   }
 }
+mutation CreatePokeman(
+  $input: CreatePokemanInput!
+  $condition: ModelPokemanConditionInput
+) {
+  createPokeman(input: $input, condition: $condition) {
+    id
+    name
+    type
+    height
+    dateCreated
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdatePokeman(
+  $input: UpdatePokemanInput!
+  $condition: ModelPokemanConditionInput
+) {
+  updatePokeman(input: $input, condition: $condition) {
+    id
+    name
+    type
+    height
+    dateCreated
+    createdAt
+    updatedAt
+  }
+}
+mutation DeletePokeman(
+  $input: DeletePokemanInput!
+  $condition: ModelPokemanConditionInput
+) {
+  deletePokeman(input: $input, condition: $condition) {
+    id
+    name
+    type
+    height
+    dateCreated
+    createdAt
+    updatedAt
+  }
+}

@@ -4,19 +4,23 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.core.model.temporal.Temporal;
 import com.zork.zork_demo.R;
+import com.amplifyframework.datastore.generated.model.*;
 
-import com.zork.zork_demo.models.Pokeman;
 
 import java.util.Date;
 
 public class AddPokemanActivity extends AppCompatActivity {
-    public static final String DATABASE_NAME = "zork_game_db";
+    public static final String Tag = "AddPokemanActivity";
 
 
 
@@ -40,7 +44,7 @@ public class AddPokemanActivity extends AppCompatActivity {
         pokemanTypeSpinner.setAdapter(new ArrayAdapter<>(
                 this,
                 androidx.appcompat.R.layout.support_simple_spinner_dropdown_item,
-                Pokeman.PokemanTypeEnum.values()
+                PokemanTypeEnum.values()
         ));
     }
 
@@ -53,14 +57,23 @@ public class AddPokemanActivity extends AppCompatActivity {
             String pokemanHeight = ((EditText) findViewById(R.id.AddPokemanHeightET)).getText().toString();
             Integer height = Integer.parseInt(pokemanHeight);
         // create a new date object
-            java.util.Date newDate = new Date();
-        // from string the enum
-            Pokeman.PokemanTypeEnum pokemanTypeEnum = Pokeman.PokemanTypeEnum.fromString(pokemanTypeSpinner.getSelectedItem().toString());
+            String currentDateString = com.amazonaws.util.DateUtils.formatISO8601Date(new Date());
 
         // create a new Pokeman Obj
-            Pokeman newPokeman = new Pokeman(pokemanName, pokemanTypeEnum, height, newDate);
+            Pokeman newPokeman = Pokeman.builder()
+                    .name(pokemanName)
+                    .type((PokemanTypeEnum) pokemanTypeSpinner.getSelectedItem())
+                    .height(height)
+                    .dateCreated(new Temporal.DateTime(currentDateString))
+                    .build();
+
         // Insert into DB
-//            gameDatabase.pokemanDao().insertAPokeman(newPokeman);
+            Amplify.API.mutate(
+                    ModelMutation.create(newPokeman),
+                    successResponse -> Log.i(Tag, "AddPokemanActivity: made a Pokeman Successfully"),
+                    failureResponse -> Log.i(Tag, "AddpokemanActivity: failed with thgis response: " + failureResponse)
+            );
+
         // Redirect to Main
             Intent goToPokemonActivity = new Intent(AddPokemanActivity.this, PokemanActivity.class);
             startActivity(goToPokemonActivity);
