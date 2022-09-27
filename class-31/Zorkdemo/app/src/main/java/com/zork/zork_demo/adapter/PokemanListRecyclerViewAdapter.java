@@ -12,10 +12,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Pokeman;
 import com.zork.zork_demo.R;
 import com.zork.zork_demo.activities.OrderFormActivity;
 import com.zork.zork_demo.activities.PokemanActivity;
-import com.zork.zork_demo.models.Pokeman;
+
 
 import java.util.List;
 

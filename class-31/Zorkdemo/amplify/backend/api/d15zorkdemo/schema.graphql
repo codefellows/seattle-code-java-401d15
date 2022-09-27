@@ -7,3 +7,20 @@ type Todo @model {
   name: String!
   description: String
 }
+
+type Pokeman @model @auth(rules: [{allow: public}]){
+    id: ID!
+    name: String!
+    type: PokemanTypeEnum
+    height: Int
+    dateCreated: AWSDateTime
+}
+
+enum PokemanTypeEnum {
+    Water
+    Electric
+    Rock
+    Psychic
+    Fire
+    Grass
+}
