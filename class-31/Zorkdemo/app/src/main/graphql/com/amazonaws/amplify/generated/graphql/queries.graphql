@@ -1,33 +1,4 @@
 # this is an auto generated file. This will be overwritten
-query GetPokeman($id: ID!) {
-  getPokeman(id: $id) {
-    id
-    name
-    type
-    height
-    dateCreated
-    createdAt
-    updatedAt
-  }
-}
-query ListPokemen(
-  $filter: ModelPokemanFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listPokemen(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      type
-      height
-      dateCreated
-      createdAt
-      updatedAt
-    }
-    nextToken
-  }
-}
 query GetSuperFurBoy($id: ID!) {
   getSuperFurBoy(id: $id) {
     id
