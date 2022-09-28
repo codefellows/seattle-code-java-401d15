@@ -12,12 +12,12 @@ import com.zork.zork_demo.R;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link PokemanFragment#newInstance} factory method to
+ * Use the {@link SuperFurBoyFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
 // TODO: Step 1-6: Make a Fragment class for the RecyclerView ViewHolders
     // Comment out everything to do with params
-public class PokemanFragment extends Fragment {
+public class SuperFurBoyFragment extends Fragment {
 
 
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,7 +27,7 @@ public class PokemanFragment extends Fragment {
 //    private String mParam1;
 //    private String mParam2;
 
-    public PokemanFragment() {
+    public SuperFurBoyFragment() {
         // Required empty public constructor
     }
 
@@ -37,10 +37,10 @@ public class PokemanFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment PokemanFragment.
+     * @return A new instance of fragment SuperFurBoyFragment.
      */
-    public static PokemanFragment newInstance(String param1, String param2) {
-        PokemanFragment fragment = new PokemanFragment();
+    public static SuperFurBoyFragment newInstance(String param1, String param2) {
+        SuperFurBoyFragment fragment = new SuperFurBoyFragment();
 //        Bundle args = new Bundle();
 //        args.putString(ARG_PARAM1, param1);
 //        args.putString(ARG_PARAM2, param2);
@@ -61,6 +61,6 @@ public class PokemanFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pokeman, container, false);
+        return inflater.inflate(R.layout.fragment_super_fur_boy, container, false);
     }
 }

@@ -1,40 +1,4 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateTodo(
-  $input: CreateTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  createTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-  }
-}
-mutation UpdateTodo(
-  $input: UpdateTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  updateTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-  }
-}
-mutation DeleteTodo(
-  $input: DeleteTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  deleteTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-  }
-}
 mutation CreatePokeman(
   $input: CreatePokemanInput!
   $condition: ModelPokemanConditionInput
@@ -73,6 +37,45 @@ mutation DeletePokeman(
     type
     height
     dateCreated
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateSuperFurBoy(
+  $input: CreateSuperFurBoyInput!
+  $condition: ModelSuperFurBoyConditionInput
+) {
+  createSuperFurBoy(input: $input, condition: $condition) {
+    id
+    name
+    type
+    height
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateSuperFurBoy(
+  $input: UpdateSuperFurBoyInput!
+  $condition: ModelSuperFurBoyConditionInput
+) {
+  updateSuperFurBoy(input: $input, condition: $condition) {
+    id
+    name
+    type
+    height
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteSuperFurBoy(
+  $input: DeleteSuperFurBoyInput!
+  $condition: ModelSuperFurBoyConditionInput
+) {
+  deleteSuperFurBoy(input: $input, condition: $condition) {
+    id
+    name
+    type
+    height
     createdAt
     updatedAt
   }

@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 import com.zork.zork_demo.R;
-import com.zork.zork_demo.activities.MainActivity;
 
 public class OrderFormActivity extends AppCompatActivity {
 
@@ -22,7 +21,7 @@ public class OrderFormActivity extends AppCompatActivity {
         Intent callingIntent = getIntent();
         String productNameString = "";
         if(callingIntent != null){
-            productNameString = callingIntent.getStringExtra(PokemanActivity.POKEMAN_NAME_EXTRA_TAG);
+            productNameString = callingIntent.getStringExtra(SuperFurBoyActivity.SUPER_FUR_BOY_NAME_EXTRA_TAG);
         TextView orderFormProductName = findViewById(R.id.OrderFormProductNameTV);
         orderFormProductName.setText(productNameString);
         }
