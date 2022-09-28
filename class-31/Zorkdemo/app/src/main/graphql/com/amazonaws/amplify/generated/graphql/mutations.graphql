@@ -1,4 +1,73 @@
 # this is an auto generated file. This will be overwritten
+mutation CreateTrainer(
+  $input: CreateTrainerInput!
+  $condition: ModelTrainerConditionInput
+) {
+  createTrainer(input: $input, condition: $condition) {
+    id
+    name
+    superFurBoys {
+      items {
+        id
+        name
+        trainerID
+        type
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateTrainer(
+  $input: UpdateTrainerInput!
+  $condition: ModelTrainerConditionInput
+) {
+  updateTrainer(input: $input, condition: $condition) {
+    id
+    name
+    superFurBoys {
+      items {
+        id
+        name
+        trainerID
+        type
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteTrainer(
+  $input: DeleteTrainerInput!
+  $condition: ModelTrainerConditionInput
+) {
+  deleteTrainer(input: $input, condition: $condition) {
+    id
+    name
+    superFurBoys {
+      items {
+        id
+        name
+        trainerID
+        type
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
 mutation CreateSuperFurBoy(
   $input: CreateSuperFurBoyInput!
   $condition: ModelSuperFurBoyConditionInput
@@ -6,8 +75,18 @@ mutation CreateSuperFurBoy(
   createSuperFurBoy(input: $input, condition: $condition) {
     id
     name
+    trainerID
     type
     height
+    trainer {
+      id
+      name
+      superFurBoys {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -19,8 +98,18 @@ mutation UpdateSuperFurBoy(
   updateSuperFurBoy(input: $input, condition: $condition) {
     id
     name
+    trainerID
     type
     height
+    trainer {
+      id
+      name
+      superFurBoys {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -32,8 +121,18 @@ mutation DeleteSuperFurBoy(
   deleteSuperFurBoy(input: $input, condition: $condition) {
     id
     name
+    trainerID
     type
     height
+    trainer {
+      id
+      name
+      superFurBoys {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }

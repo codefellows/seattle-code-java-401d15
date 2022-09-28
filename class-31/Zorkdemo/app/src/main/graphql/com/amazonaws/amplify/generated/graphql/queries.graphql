@@ -1,10 +1,58 @@
 # this is an auto generated file. This will be overwritten
+query GetTrainer($id: ID!) {
+  getTrainer(id: $id) {
+    id
+    name
+    superFurBoys {
+      items {
+        id
+        name
+        trainerID
+        type
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+query ListTrainers(
+  $filter: ModelTrainerFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listTrainers(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      name
+      superFurBoys {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+    nextToken
+  }
+}
 query GetSuperFurBoy($id: ID!) {
   getSuperFurBoy(id: $id) {
     id
     name
+    trainerID
     type
     height
+    trainer {
+      id
+      name
+      superFurBoys {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -18,8 +66,15 @@ query ListSuperFurBoys(
     items {
       id
       name
+      trainerID
       type
       height
+      trainer {
+        id
+        name
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

@@ -57,13 +57,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/SuperFurBoyZorkImageView"
-        android:layout_width="165dp"
-        android:layout_height="98dp"
-        android:layout_marginEnd="4dp"
-        android:src="@drawable/zorkie"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

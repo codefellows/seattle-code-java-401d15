@@ -14,6 +14,8 @@ import android.widget.TextView;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.core.Amplify;
 import com.amplifyframework.datastore.generated.model.AmplifyModelProvider;
+import com.amplifyframework.datastore.generated.model.PokemanTypeEnum;
+import com.amplifyframework.datastore.generated.model.SuperFurBoy;
 import com.amplifyframework.datastore.generated.model.Trainer;
 import com.zork.zork_demo.R;
 
@@ -37,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setUpPokemanBttn();
         setUpAddAPokemanBttn();
 
-        // Hardcoding Trainers
+//         Hardcoding Trainers
+
 //        Trainer newTrainer = Trainer.builder()
 //                .name("Stanley")
 //                .build();
@@ -63,6 +66,41 @@ public class MainActivity extends AppCompatActivity {
 //                ModelMutation.create(newTrainer2),
 //                success -> Log.i(TAG, "Worked"),
 //                failure -> Log.i(TAG, "Didn't work")
+//        );
+//        SuperFurBoy newSFB = SuperFurBoy.builder()
+//                .name("Fire Zork")
+//                .type(PokemanTypeEnum.Fire)
+//                .height(20)
+//                .trainer(newTrainer)
+//                .build();
+//        Amplify.API.mutate(
+//                ModelMutation.create(newSFB),
+//                s -> Log.i(TAG, ""),
+//                f -> Log.i(TAG, "")
+//        );
+//
+//        SuperFurBoy newSFB1 = SuperFurBoy.builder()
+//                .name("Electric Zork")
+//                .type(PokemanTypeEnum.Electric)
+//                .height(20)
+//                .trainer(newTrainer1)
+//                .build();
+//        Amplify.API.mutate(
+//                ModelMutation.create(newSFB1),
+//                s -> Log.i(TAG, ""),
+//                f -> Log.i(TAG, "")
+//        );
+//
+//        SuperFurBoy newSFB2 = SuperFurBoy.builder()
+//                .name("Water Zork")
+//                .type(PokemanTypeEnum.Water)
+//                .height(20)
+//                .trainer(newTrainer2)
+//                .build();
+//        Amplify.API.mutate(
+//                ModelMutation.create(newSFB2),
+//                s -> Log.i(TAG, ""),
+//                f -> Log.i(TAG, "")
 //        );
     }
 
