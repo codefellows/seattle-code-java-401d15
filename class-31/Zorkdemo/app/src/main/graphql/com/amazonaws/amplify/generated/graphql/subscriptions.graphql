@@ -1,10 +1,80 @@
 # this is an auto generated file. This will be overwritten
+subscription OnCreateTrainer {
+  onCreateTrainer {
+    id
+    name
+    superFurBoys {
+      items {
+        id
+        name
+        trainerID
+        type
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateTrainer {
+  onUpdateTrainer {
+    id
+    name
+    superFurBoys {
+      items {
+        id
+        name
+        trainerID
+        type
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteTrainer {
+  onDeleteTrainer {
+    id
+    name
+    superFurBoys {
+      items {
+        id
+        name
+        trainerID
+        type
+        height
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateSuperFurBoy {
   onCreateSuperFurBoy {
     id
     name
+    trainerID
     type
     height
+    trainer {
+      id
+      name
+      superFurBoys {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -13,8 +83,18 @@ subscription OnUpdateSuperFurBoy {
   onUpdateSuperFurBoy {
     id
     name
+    trainerID
     type
     height
+    trainer {
+      id
+      name
+      superFurBoys {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }
@@ -23,8 +103,18 @@ subscription OnDeleteSuperFurBoy {
   onDeleteSuperFurBoy {
     id
     name
+    trainerID
     type
     height
+    trainer {
+      id
+      name
+      superFurBoys {
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
     createdAt
     updatedAt
   }

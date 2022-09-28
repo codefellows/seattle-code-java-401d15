@@ -11,17 +11,23 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
 import com.zork.zork_demo.R;
 import com.amplifyframework.datastore.generated.model.*;
 
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 public class AddSuperFurBoyActivity extends AppCompatActivity {
     public static final String Tag = "AddSuperFurBoyActivity";
 
-
+    Spinner trainerSpinner = null;
+    CompletableFuture<List<Trainer>> trainerFuture = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,33 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
 
     }
 
+    private void setUpTrainerSpinner(){
+        // query our trainers
+        Amplify.API.query(
+                ModelQuery.list(Trainer.class),
+                success -> {
+                    Log.i(Tag, "Read trainers succcessfully");
+                    ArrayList<String> trainerNames = new ArrayList<>();
+                    ArrayList<Trainer> trainers = new ArrayList<>();
+                    for (Trainer trainer : success.getData()){
+                        trainers.add(trainer);
+                        trainerNames.add(trainer.getName());
+                    }
+                    trainerFuture.complete(trainers);
+                    runOnUiThread(() -> {
+                        trainerSpinner.setAdapter(new ArrayAdapter<>(
+                                this,
+                                android.R.layout.simple_spinner_item,
+                                trainerNames));
+                    });
+                },
+                failure -> {
+                    trainerFuture.complete(null); // Don't forget to complete a CompletableFuture on every code path!
+                    Log.i(Tag, "Did not read trainers successfully");
+                }
+        );
+    }
+
     private void setUpTypeSpinner(){
         Spinner pokemanTypeSpinner = findViewById(R.id.AddSuperFurBoyTypeSpinner);
         pokemanTypeSpinner.setAdapter(new ArrayAdapter<>(
@@ -44,6 +77,19 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
     }
 
     private void setUpSubmitBttn(){
+        String selectedTrainerString = trainerSpinner.getSelectedItem().toString();
+        List<Trainer> trainers = null;
+        try {
+            trainers = trainerFuture.get();
+        } catch (InterruptedException ie) {
+            Log.e(Tag, "Interupted Exception while getting trainers");
+            Thread.currentThread().interrupt();
+        } catch (ExecutionException ee) {
+            Log.e(Tag, "ExecutionException while getting trainers" + ee.getMessage());
+        }
+
+        Trainer selectedTrainer = trainers.stream().filter(t -> t.getName().equals(selectedTrainerString)).findAny().orElseThrow(RuntimeException::new);
+
         Spinner superFurBoyTypeSpinner = findViewById(R.id.AddSuperFurBoyTypeSpinner);
         Button saveNewSuperFurBoyBttn = findViewById(R.id.AddSuperFurBoySubmitBttn);
         saveNewSuperFurBoyBttn.setOnClickListener(view -> {
@@ -59,6 +105,7 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
                     .name(superFurBoyName)
                     .type((PokemanTypeEnum) superFurBoyTypeSpinner.getSelectedItem())
                     .height(height)
+//                    .trainer(selectedTrainer)
                     .build();
 
         // Insert into DB

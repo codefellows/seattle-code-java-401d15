@@ -1,5 +1,6 @@
 package com.amplifyframework.datastore.generated.model;
 
+import com.amplifyframework.core.model.annotations.BelongsTo;
 import com.amplifyframework.core.model.temporal.Temporal;
 
 import java.util.List;
@@ -24,15 +25,18 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 @ModelConfig(pluralName = "SuperFurBoys", authRules = {
   @AuthRule(allow = AuthStrategy.PUBLIC, operations = { ModelOperation.CREATE, ModelOperation.UPDATE, ModelOperation.DELETE, ModelOperation.READ })
 })
+@Index(name = "byTrainer", fields = {"trainerID"})
 public final class SuperFurBoy implements Model {
   public static final QueryField ID = field("SuperFurBoy", "id");
   public static final QueryField NAME = field("SuperFurBoy", "name");
   public static final QueryField TYPE = field("SuperFurBoy", "type");
   public static final QueryField HEIGHT = field("SuperFurBoy", "height");
+  public static final QueryField TRAINER = field("SuperFurBoy", "trainerID");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String name;
   private final @ModelField(targetType="PokemanTypeEnum") PokemanTypeEnum type;
   private final @ModelField(targetType="Int") Integer height;
+  private final @ModelField(targetType="Trainer") @BelongsTo(targetName = "trainerID", type = Trainer.class) Trainer trainer;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
@@ -51,6 +55,10 @@ public final class SuperFurBoy implements Model {
       return height;
   }
   
+  public Trainer getTrainer() {
+      return trainer;
+  }
+  
   public Temporal.DateTime getCreatedAt() {
       return createdAt;
   }
@@ -59,11 +67,12 @@ public final class SuperFurBoy implements Model {
       return updatedAt;
   }
   
-  private SuperFurBoy(String id, String name, PokemanTypeEnum type, Integer height) {
+  private SuperFurBoy(String id, String name, PokemanTypeEnum type, Integer height, Trainer trainer) {
     this.id = id;
     this.name = name;
     this.type = type;
     this.height = height;
+    this.trainer = trainer;
   }
   
   @Override
@@ -78,6 +87,7 @@ public final class SuperFurBoy implements Model {
               ObjectsCompat.equals(getName(), superFurBoy.getName()) &&
               ObjectsCompat.equals(getType(), superFurBoy.getType()) &&
               ObjectsCompat.equals(getHeight(), superFurBoy.getHeight()) &&
+              ObjectsCompat.equals(getTrainer(), superFurBoy.getTrainer()) &&
               ObjectsCompat.equals(getCreatedAt(), superFurBoy.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), superFurBoy.getUpdatedAt());
       }
@@ -90,6 +100,7 @@ public final class SuperFurBoy implements Model {
       .append(getName())
       .append(getType())
       .append(getHeight())
+      .append(getTrainer())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -104,6 +115,7 @@ public final class SuperFurBoy implements Model {
       .append("name=" + String.valueOf(getName()) + ", ")
       .append("type=" + String.valueOf(getType()) + ", ")
       .append("height=" + String.valueOf(getHeight()) + ", ")
+      .append("trainer=" + String.valueOf(getTrainer()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -127,6 +139,7 @@ public final class SuperFurBoy implements Model {
       id,
       null,
       null,
+      null,
       null
     );
   }
@@ -135,7 +148,8 @@ public final class SuperFurBoy implements Model {
     return new CopyOfBuilder(id,
       name,
       type,
-      height);
+      height,
+      trainer);
   }
   public interface NameStep {
     BuildStep name(String name);
@@ -147,6 +161,7 @@ public final class SuperFurBoy implements Model {
     BuildStep id(String id);
     BuildStep type(PokemanTypeEnum type);
     BuildStep height(Integer height);
+    BuildStep trainer(Trainer trainer);
   }
   
 
@@ -155,6 +170,7 @@ public final class SuperFurBoy implements Model {
     private String name;
     private PokemanTypeEnum type;
     private Integer height;
+    private Trainer trainer;
     @Override
      public SuperFurBoy build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -163,7 +179,8 @@ public final class SuperFurBoy implements Model {
           id,
           name,
           type,
-          height);
+          height,
+          trainer);
     }
     
     @Override
@@ -185,6 +202,12 @@ public final class SuperFurBoy implements Model {
         return this;
     }
     
+    @Override
+     public BuildStep trainer(Trainer trainer) {
+        this.trainer = trainer;
+        return this;
+    }
+    
     /** 
      * @param id id
      * @return Current Builder instance, for fluent method chaining
@@ -197,11 +220,12 @@ public final class SuperFurBoy implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name, PokemanTypeEnum type, Integer height) {
+    private CopyOfBuilder(String id, String name, PokemanTypeEnum type, Integer height, Trainer trainer) {
       super.id(id);
       super.name(name)
         .type(type)
-        .height(height);
+        .height(height)
+        .trainer(trainer);
     }
     
     @Override
@@ -217,6 +241,11 @@ public final class SuperFurBoy implements Model {
     @Override
      public CopyOfBuilder height(Integer height) {
       return (CopyOfBuilder) super.height(height);
+    }
+    
+    @Override
+     public CopyOfBuilder trainer(Trainer trainer) {
+      return (CopyOfBuilder) super.trainer(trainer);
     }
   }
   
