@@ -6,16 +6,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.amplifyframework.api.graphql.model.ModelMutation;
+import com.amplifyframework.core.Amplify;
+import com.amplifyframework.datastore.generated.model.AmplifyModelProvider;
+import com.amplifyframework.datastore.generated.model.Trainer;
 import com.zork.zork_demo.R;
 
 
 public class MainActivity extends AppCompatActivity {
     public static final String DATABASE_NAME = "zork_game_db";
     public static final String PRODUCT_NAME_EXTRA_TAG = "productName";
+    public static final String TAG = "MainActivity";
     SharedPreferences preferences;
 
     @Override
@@ -30,6 +36,34 @@ public class MainActivity extends AppCompatActivity {
         setUpOrderFormButton();
         setUpPokemanBttn();
         setUpAddAPokemanBttn();
+
+        // Hardcoding Trainers
+//        Trainer newTrainer = Trainer.builder()
+//                .name("Stanley")
+//                .build();
+//        Amplify.API.mutate(
+//                ModelMutation.create(newTrainer),
+//                success -> Log.i(TAG, "Worked"),
+//                failure -> Log.i(TAG, "Didn't work")
+//        );
+//
+//        Trainer newTrainer1 = Trainer.builder()
+//                .name("Rexie")
+//                .build();
+//        Amplify.API.mutate(
+//                ModelMutation.create(newTrainer1),
+//                success -> Log.i(TAG, "Worked"),
+//                failure -> Log.i(TAG, "Didn't work")
+//        );
+//
+//        Trainer newTrainer2 = Trainer.builder()
+//                .name("Mandy")
+//                .build();
+//        Amplify.API.mutate(
+//                ModelMutation.create(newTrainer2),
+//                success -> Log.i(TAG, "Worked"),
+//                failure -> Log.i(TAG, "Didn't work")
+//        );
     }
 
     @Override
