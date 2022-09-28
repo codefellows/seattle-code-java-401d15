@@ -44,14 +44,14 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUpAddAPokemanBttn(){
         findViewById(R.id.mainActivityAddPokemanBttn).setOnClickListener(view -> {
-            Intent goToAddAPokemanActivity = new Intent(MainActivity.this, AddPokemanActivity.class);
+            Intent goToAddAPokemanActivity = new Intent(MainActivity.this, AddSuperFurBoyActivity.class);
             startActivity(goToAddAPokemanActivity);
         });
     }
 
     private void setUpPokemanBttn(){
         findViewById(R.id.MainActivityPokemanBttn).setOnClickListener(view -> {
-            Intent goToPokemanActivity = new Intent(MainActivity.this, PokemanActivity.class);
+            Intent goToPokemanActivity = new Intent(MainActivity.this, SuperFurBoyActivity.class);
             startActivity(goToPokemanActivity);
         });
     }

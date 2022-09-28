@@ -7,7 +7,7 @@ import com.amplifyframework.AmplifyException;
 import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.core.Amplify;
 
-public class PokemanAmplifyApplication extends Application {
+public class SuperFurBoyAmplifyApplication extends Application {
     public static final String Tag = "PokemanApplication";
 
     @Override

@@ -1,52 +1,25 @@
 # this is an auto generated file. This will be overwritten
-query GetTodo($id: ID!) {
-  getTodo(id: $id) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-  }
-}
-query ListTodos(
-  $filter: ModelTodoFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  listTodos(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      id
-      name
-      description
-      createdAt
-      updatedAt
-    }
-    nextToken
-  }
-}
-query GetPokeman($id: ID!) {
-  getPokeman(id: $id) {
+query GetSuperFurBoy($id: ID!) {
+  getSuperFurBoy(id: $id) {
     id
     name
     type
     height
-    dateCreated
     createdAt
     updatedAt
   }
 }
-query ListPokemans(
-  $filter: ModelPokemanFilterInput
+query ListSuperFurBoys(
+  $filter: ModelSuperFurBoyFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listPokemans(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listSuperFurBoys(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
       name
       type
       height
-      dateCreated
       createdAt
       updatedAt
     }

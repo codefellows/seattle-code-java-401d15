@@ -1,78 +1,39 @@
 # this is an auto generated file. This will be overwritten
-mutation CreateTodo(
-  $input: CreateTodoInput!
-  $condition: ModelTodoConditionInput
+mutation CreateSuperFurBoy(
+  $input: CreateSuperFurBoyInput!
+  $condition: ModelSuperFurBoyConditionInput
 ) {
-  createTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-  }
-}
-mutation UpdateTodo(
-  $input: UpdateTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  updateTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-  }
-}
-mutation DeleteTodo(
-  $input: DeleteTodoInput!
-  $condition: ModelTodoConditionInput
-) {
-  deleteTodo(input: $input, condition: $condition) {
-    id
-    name
-    description
-    createdAt
-    updatedAt
-  }
-}
-mutation CreatePokeman(
-  $input: CreatePokemanInput!
-  $condition: ModelPokemanConditionInput
-) {
-  createPokeman(input: $input, condition: $condition) {
+  createSuperFurBoy(input: $input, condition: $condition) {
     id
     name
     type
     height
-    dateCreated
     createdAt
     updatedAt
   }
 }
-mutation UpdatePokeman(
-  $input: UpdatePokemanInput!
-  $condition: ModelPokemanConditionInput
+mutation UpdateSuperFurBoy(
+  $input: UpdateSuperFurBoyInput!
+  $condition: ModelSuperFurBoyConditionInput
 ) {
-  updatePokeman(input: $input, condition: $condition) {
+  updateSuperFurBoy(input: $input, condition: $condition) {
     id
     name
     type
     height
-    dateCreated
     createdAt
     updatedAt
   }
 }
-mutation DeletePokeman(
-  $input: DeletePokemanInput!
-  $condition: ModelPokemanConditionInput
+mutation DeleteSuperFurBoy(
+  $input: DeleteSuperFurBoyInput!
+  $condition: ModelSuperFurBoyConditionInput
 ) {
-  deletePokeman(input: $input, condition: $condition) {
+  deleteSuperFurBoy(input: $input, condition: $condition) {
     id
     name
     type
     height
-    dateCreated
     createdAt
     updatedAt
   }
