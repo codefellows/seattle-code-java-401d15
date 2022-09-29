@@ -105,7 +105,7 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
                     .name(superFurBoyName)
                     .type((PokemanTypeEnum) superFurBoyTypeSpinner.getSelectedItem())
                     .height(height)
-//                    .trainer(selectedTrainer)
+                    .trainer(selectedTrainer)
                     .build();
 
         // Insert into DB
