@@ -10,6 +10,11 @@
       "StackName": "amplify-d15zorkdemo-dev-111831",
       "StackId": "arn:aws:cloudformation:us-west-2:582540622287:stack/amplify-d15zorkdemo-dev-111831/a101cf30-3dc7-11ed-8e8d-06c1c6a58977",
       "AmplifyAppId": "d3gd25l855fj8x"
+    },
+    "categories": {
+      "auth": {
+        "d15zorkdemo12f959bd": {}
+      }
     }
   }
 }
