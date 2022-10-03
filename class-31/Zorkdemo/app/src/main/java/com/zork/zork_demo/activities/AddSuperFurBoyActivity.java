@@ -35,9 +35,8 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_super_fur_boy);
 
         setUpTypeSpinner();
+        setUpTrainerSpinner();
         setUpSubmitBttn();
-
-
     }
 
     private void setUpTrainerSpinner(){
@@ -77,22 +76,22 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
     }
 
     private void setUpSubmitBttn(){
-        String selectedTrainerString = trainerSpinner.getSelectedItem().toString();
-        List<Trainer> trainers = null;
-        try {
-            trainers = trainerFuture.get();
-        } catch (InterruptedException ie) {
-            Log.e(Tag, "Interupted Exception while getting trainers");
-            Thread.currentThread().interrupt();
-        } catch (ExecutionException ee) {
-            Log.e(Tag, "ExecutionException while getting trainers" + ee.getMessage());
-        }
-
-        Trainer selectedTrainer = trainers.stream().filter(t -> t.getName().equals(selectedTrainerString)).findAny().orElseThrow(RuntimeException::new);
 
         Spinner superFurBoyTypeSpinner = findViewById(R.id.AddSuperFurBoyTypeSpinner);
         Button saveNewSuperFurBoyBttn = findViewById(R.id.AddSuperFurBoySubmitBttn);
         saveNewSuperFurBoyBttn.setOnClickListener(view -> {
+            String selectedTrainerString = trainerSpinner.getSelectedItem().toString();
+            List<Trainer> trainers = null;
+            try {
+                trainers = trainerFuture.get();
+            } catch (InterruptedException ie) {
+                Log.e(Tag, "Interupted Exception while getting trainers");
+                Thread.currentThread().interrupt();
+            } catch (ExecutionException ee) {
+                Log.e(Tag, "ExecutionException while getting trainers" + ee.getMessage());
+            }
+
+            Trainer selectedTrainer = trainers.stream().filter(t -> t.getName().equals(selectedTrainerString)).findAny().orElseThrow(RuntimeException::new);
             // gather all data from inputs
             String superFurBoyName = ((EditText) findViewById(R.id.AddSuperFurBoyNameET)).getText().toString();
             String superFurBoyHeight = ((EditText) findViewById(R.id.AddSuperFurBoyHeightET)).getText().toString();
