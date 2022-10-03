@@ -33,6 +33,8 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_super_fur_boy);
+        trainerFuture = new CompletableFuture<>();
+
 
         setUpTypeSpinner();
         setUpTrainerSpinner();
@@ -41,6 +43,7 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
 
     private void setUpTrainerSpinner(){
         // query our trainers
+        trainerSpinner = findViewById(R.id.AddSuperFurBoySpinner);
         Amplify.API.query(
                 ModelQuery.list(Trainer.class),
                 success -> {
@@ -76,7 +79,6 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
     }
 
     private void setUpSubmitBttn(){
-
         Spinner superFurBoyTypeSpinner = findViewById(R.id.AddSuperFurBoyTypeSpinner);
         Button saveNewSuperFurBoyBttn = findViewById(R.id.AddSuperFurBoySubmitBttn);
         saveNewSuperFurBoyBttn.setOnClickListener(view -> {
