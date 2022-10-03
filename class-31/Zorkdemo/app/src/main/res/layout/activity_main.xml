@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="134dp"
         android:layout_marginEnd="160dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="36dp"
         android:text="@string/what_s_your_name"
         app:layout_constraintBottom_toTopOf="@+id/mainActivityAddPokemanBttn"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,11 +38,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="147dp"
         android:layout_marginEnd="173dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginBottom="172dp"
         android:text="@string/submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -50,19 +50,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="154dp"
+        android:layout_marginTop="23dp"
         android:layout_marginEnd="163dp"
-        android:layout_marginBottom="76dp"
         android:text="Order Form"
-        app:layout_constraintBottom_toTopOf="@+id/mainActivityGreetingTextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.918"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MainActivityPokemanBttn" />
 
     <TextView
         android:id="@+id/MainActivityUserNameTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="88dp"
         android:text="name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,5 +78,27 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MainActivityUserNameTV" />
+
+    <Button
+        android:id="@+id/MainLoginBttn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="54dp"
+        android:text="Login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/MainSignUpBttn"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/MainSignUpBttn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:text="Sign Up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/MainLoginBttn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

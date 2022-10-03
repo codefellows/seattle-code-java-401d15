@@ -7,16 +7,14 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.amplifyframework.api.graphql.model.ModelMutation;
+
+import com.amplifyframework.auth.AuthUser;
 import com.amplifyframework.core.Amplify;
-import com.amplifyframework.datastore.generated.model.AmplifyModelProvider;
-import com.amplifyframework.datastore.generated.model.PokemanTypeEnum;
-import com.amplifyframework.datastore.generated.model.SuperFurBoy;
-import com.amplifyframework.datastore.generated.model.Trainer;
 import com.zork.zork_demo.R;
 
 
@@ -25,11 +23,57 @@ public class MainActivity extends AppCompatActivity {
     public static final String PRODUCT_NAME_EXTRA_TAG = "productName";
     public static final String TAG = "MainActivity";
     SharedPreferences preferences;
+    public AuthUser currentUser = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        currentUser = Amplify.Auth.getCurrentUser();
+
+
+        // Hardcode signup
+//        Amplify.Auth.signUp("alex.white@codefellows.com",
+//                "p@ssw0rd",  // Cognito's default password policy is 8 characters, no other requirements
+//                AuthSignUpOptions.builder()
+//                        .userAttribute(AuthUserAttributeKey.email(), "alex.white@codefellows.com")
+//                        .userAttribute(AuthUserAttributeKey.nickname(), "Firefly")
+//                        .build(),
+//                success -> Log.i(TAG, "Signup success! " + success),
+//                failure -> Log.i(TAG,"Signup failed with username " + "alex.white@codefellows.com" + "with message: " + failure)
+//                );
+
+        // User verify
+//            Amplify.Auth.confirmSignUp("alex.white@codefellows.com",
+//                    "147600",
+//                    success -> Log.i(TAG, "Verification succeeded: " + success),
+//                    failure -> Log.i(TAG, "Verification Failed: " + failure)
+//                    );
+        // user Login
+//            Amplify.Auth.signIn("alex.white@codefellows.com",
+//                        "p@ssw0rd",
+//                    success -> Log.i(TAG, "Login succeeded: " + success.toString()),
+//                    failure -> Log.i(TAG, "Login failed: " + failure.toString())
+//                    );
+//
+//        Amplify.Auth.fetchAuthSession(
+//                result -> Log.i("AmplifyQuickstart", result.toString()),
+//                error -> Log.e("AmplifyQuickstart", error.toString())
+//        );
+
+        // LOGOUT
+//        Amplify.Auth.signOut(
+//                () ->
+//                {
+//                    Log.i(TAG, "Logout succeeded!");
+//                },
+//                failure ->
+//                {
+//                    Log.i(TAG, "Logout failed: " + failure.toString());
+//                }
+//        );
+
+
 
         // initiliaze SP
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -38,70 +82,7 @@ public class MainActivity extends AppCompatActivity {
         setUpOrderFormButton();
         setUpPokemanBttn();
         setUpAddAPokemanBttn();
-
-//         Hardcoding Trainers
-
-//        Trainer newTrainer = Trainer.builder()
-//                .name("Stanley")
-//                .build();
-//        Amplify.API.mutate(
-//                ModelMutation.create(newTrainer),
-//                success -> Log.i(TAG, "Worked"),
-//                failure -> Log.i(TAG, "Didn't work")
-//        );
-//
-//        Trainer newTrainer1 = Trainer.builder()
-//                .name("Rexie")
-//                .build();
-//        Amplify.API.mutate(
-//                ModelMutation.create(newTrainer1),
-//                success -> Log.i(TAG, "Worked"),
-//                failure -> Log.i(TAG, "Didn't work")
-//        );
-//
-//        Trainer newTrainer2 = Trainer.builder()
-//                .name("Mandy")
-//                .build();
-//        Amplify.API.mutate(
-//                ModelMutation.create(newTrainer2),
-//                success -> Log.i(TAG, "Worked"),
-//                failure -> Log.i(TAG, "Didn't work")
-//        );
-//        SuperFurBoy newSFB = SuperFurBoy.builder()
-//                .name("Fire Zork")
-//                .type(PokemanTypeEnum.Fire)
-//                .height(20)
-//                .trainer(newTrainer)
-//                .build();
-//        Amplify.API.mutate(
-//                ModelMutation.create(newSFB),
-//                s -> Log.i(TAG, ""),
-//                f -> Log.i(TAG, "")
-//        );
-//
-//        SuperFurBoy newSFB1 = SuperFurBoy.builder()
-//                .name("Electric Zork")
-//                .type(PokemanTypeEnum.Electric)
-//                .height(20)
-//                .trainer(newTrainer1)
-//                .build();
-//        Amplify.API.mutate(
-//                ModelMutation.create(newSFB1),
-//                s -> Log.i(TAG, ""),
-//                f -> Log.i(TAG, "")
-//        );
-//
-//        SuperFurBoy newSFB2 = SuperFurBoy.builder()
-//                .name("Water Zork")
-//                .type(PokemanTypeEnum.Water)
-//                .height(20)
-//                .trainer(newTrainer2)
-//                .build();
-//        Amplify.API.mutate(
-//                ModelMutation.create(newSFB2),
-//                s -> Log.i(TAG, ""),
-//                f -> Log.i(TAG, "")
-//        );
+        setUpLoginSignUpBttns();
     }
 
     @Override
@@ -112,6 +93,30 @@ public class MainActivity extends AppCompatActivity {
         //display name to page
         TextView userNameEdited = findViewById(R.id.MainActivityUserNameTV);
         userNameEdited.setText(userName);
+    }
+
+    // login bttn
+    private void setUpLoginSignUpBttns(){
+        Button loginBttn = findViewById(R.id.MainLoginBttn);
+        Button signUpBttn = findViewById(R.id.MainSignUpBttn);
+
+        if (currentUser == null) {
+            loginBttn.setVisibility(View.VISIBLE);
+            signUpBttn.setVisibility(View.VISIBLE);
+        } else {
+            loginBttn.setVisibility(View.INVISIBLE);
+            signUpBttn.setVisibility(View.INVISIBLE);
+        }
+        loginBttn.setOnClickListener(view -> {
+            Intent goToLoginActivity = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(goToLoginActivity);
+        });
+
+        signUpBttn.setOnClickListener(view -> {
+            Intent goToSignUpActivity = new Intent(MainActivity.this, SignUpActivity.class);
+            startActivity(goToSignUpActivity);
+        });
+
     }
 
     private void setUpAddAPokemanBttn(){

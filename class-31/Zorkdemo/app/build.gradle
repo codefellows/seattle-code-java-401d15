@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.zork.zork_demo"
-        minSdk 24
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -28,7 +28,7 @@ android {
 }
 
 dependencies {
-
+    implementation 'com.amplifyframework:aws-auth-cognito:1.37.5'
     implementation 'com.amplifyframework:aws-api:1.37.3'
     implementation 'com.amplifyframework:aws-datastore:1.37.3'
 
