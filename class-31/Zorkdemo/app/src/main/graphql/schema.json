@@ -209,6 +209,18 @@
                         "deprecationReason": null
                     },
                     {
+                        "name": "productImageS3Key",
+                        "description": null,
+                        "args": [],
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "isDeprecated": false,
+                        "deprecationReason": null
+                    },
+                    {
                         "name": "superFurBoys",
                         "description": null,
                         "args": [
@@ -1287,6 +1299,16 @@
                         "defaultValue": null
                     },
                     {
+                        "name": "productImageS3Key",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
                         "name": "and",
                         "description": null,
                         "type": {
@@ -1634,6 +1656,16 @@
                             }
                         },
                         "defaultValue": null
+                    },
+                    {
+                        "name": "productImageS3Key",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
                     }
                 ],
                 "interfaces": null,
@@ -1648,6 +1680,16 @@
                 "inputFields": [
                     {
                         "name": "name",
+                        "description": null,
+                        "type": {
+                            "kind": "INPUT_OBJECT",
+                            "name": "ModelStringInput",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "productImageS3Key",
                         "description": null,
                         "type": {
                             "kind": "INPUT_OBJECT",
@@ -1721,6 +1763,16 @@
                     },
                     {
                         "name": "name",
+                        "description": null,
+                        "type": {
+                            "kind": "SCALAR",
+                            "name": "String",
+                            "ofType": null
+                        },
+                        "defaultValue": null
+                    },
+                    {
+                        "name": "productImageS3Key",
                         "description": null,
                         "type": {
                             "kind": "SCALAR",

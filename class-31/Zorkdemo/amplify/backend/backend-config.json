@@ -10,7 +10,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 7,
-              "apiKeyExpirationDate": "2022-10-10T17:44:17.321Z",
+              "apiKeyExpirationDate": "2022-10-11T18:38:48.228Z",
               "description": ""
             }
           },
@@ -45,6 +45,13 @@
           "EMAIL"
         ]
       }
+    }
+  },
+  "storage": {
+    "zorkmasterstorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
     }
   }
 }

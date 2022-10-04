@@ -6,6 +6,7 @@ mutation CreateTrainer(
   createTrainer(input: $input, condition: $condition) {
     id
     name
+    productImageS3Key
     superFurBoys {
       items {
         id
@@ -29,6 +30,7 @@ mutation UpdateTrainer(
   updateTrainer(input: $input, condition: $condition) {
     id
     name
+    productImageS3Key
     superFurBoys {
       items {
         id
@@ -52,6 +54,7 @@ mutation DeleteTrainer(
   deleteTrainer(input: $input, condition: $condition) {
     id
     name
+    productImageS3Key
     superFurBoys {
       items {
         id
@@ -81,6 +84,7 @@ mutation CreateSuperFurBoy(
     trainer {
       id
       name
+      productImageS3Key
       superFurBoys {
         nextToken
       }
@@ -104,6 +108,7 @@ mutation UpdateSuperFurBoy(
     trainer {
       id
       name
+      productImageS3Key
       superFurBoys {
         nextToken
       }
@@ -127,6 +132,7 @@ mutation DeleteSuperFurBoy(
     trainer {
       id
       name
+      productImageS3Key
       superFurBoys {
         nextToken
       }

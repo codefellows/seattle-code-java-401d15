@@ -11,6 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Zorkdemo">
         <activity
+            android:name=".activities.ImageSuperFurBoyActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LoginActivity"
             android:exported="false" />
         <activity

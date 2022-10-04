@@ -1,0 +1,18 @@
+{
+  "resourceName": "zorkmasterstorage",
+  "policyUUID": "eb44c628",
+  "bucketName": "d15zorkdemo41b2b931be42410ea76fe62d95426956",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
