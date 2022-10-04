@@ -5,6 +5,7 @@
 type Trainer @model @auth(rules: [{allow: public}]){
     id: ID!
     name: String!
+    productImageS3Key: String
     superFurBoys: [SuperFurBoy] @hasMany(indexName: "byTrainer", fields: ["id"])
 }
 

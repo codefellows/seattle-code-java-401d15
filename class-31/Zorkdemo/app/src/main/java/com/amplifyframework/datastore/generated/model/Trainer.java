@@ -28,8 +28,10 @@ import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 public final class Trainer implements Model {
   public static final QueryField ID = field("Trainer", "id");
   public static final QueryField NAME = field("Trainer", "name");
+  public static final QueryField PRODUCT_IMAGE_S3_KEY = field("Trainer", "productImageS3Key");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String name;
+  private final @ModelField(targetType="String") String productImageS3Key;
   private final @ModelField(targetType="SuperFurBoy") @HasMany(associatedWith = "trainer", type = SuperFurBoy.class) List<SuperFurBoy> superFurBoys = null;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
@@ -39,6 +41,10 @@ public final class Trainer implements Model {
   
   public String getName() {
       return name;
+  }
+  
+  public String getProductImageS3Key() {
+      return productImageS3Key;
   }
   
   public List<SuperFurBoy> getSuperFurBoys() {
@@ -53,9 +59,10 @@ public final class Trainer implements Model {
       return updatedAt;
   }
   
-  private Trainer(String id, String name) {
+  private Trainer(String id, String name, String productImageS3Key) {
     this.id = id;
     this.name = name;
+    this.productImageS3Key = productImageS3Key;
   }
   
   @Override
@@ -68,6 +75,7 @@ public final class Trainer implements Model {
       Trainer trainer = (Trainer) obj;
       return ObjectsCompat.equals(getId(), trainer.getId()) &&
               ObjectsCompat.equals(getName(), trainer.getName()) &&
+              ObjectsCompat.equals(getProductImageS3Key(), trainer.getProductImageS3Key()) &&
               ObjectsCompat.equals(getCreatedAt(), trainer.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), trainer.getUpdatedAt());
       }
@@ -78,6 +86,7 @@ public final class Trainer implements Model {
     return new StringBuilder()
       .append(getId())
       .append(getName())
+      .append(getProductImageS3Key())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -90,6 +99,7 @@ public final class Trainer implements Model {
       .append("Trainer {")
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("name=" + String.valueOf(getName()) + ", ")
+      .append("productImageS3Key=" + String.valueOf(getProductImageS3Key()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -111,13 +121,15 @@ public final class Trainer implements Model {
   public static Trainer justId(String id) {
     return new Trainer(
       id,
+      null,
       null
     );
   }
   
   public CopyOfBuilder copyOfBuilder() {
     return new CopyOfBuilder(id,
-      name);
+      name,
+      productImageS3Key);
   }
   public interface NameStep {
     BuildStep name(String name);
@@ -127,25 +139,34 @@ public final class Trainer implements Model {
   public interface BuildStep {
     Trainer build();
     BuildStep id(String id);
+    BuildStep productImageS3Key(String productImageS3Key);
   }
   
 
   public static class Builder implements NameStep, BuildStep {
     private String id;
     private String name;
+    private String productImageS3Key;
     @Override
      public Trainer build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
         
         return new Trainer(
           id,
-          name);
+          name,
+          productImageS3Key);
     }
     
     @Override
      public BuildStep name(String name) {
         Objects.requireNonNull(name);
         this.name = name;
+        return this;
+    }
+    
+    @Override
+     public BuildStep productImageS3Key(String productImageS3Key) {
+        this.productImageS3Key = productImageS3Key;
         return this;
     }
     
@@ -161,14 +182,20 @@ public final class Trainer implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String name) {
+    private CopyOfBuilder(String id, String name, String productImageS3Key) {
       super.id(id);
-      super.name(name);
+      super.name(name)
+        .productImageS3Key(productImageS3Key);
     }
     
     @Override
      public CopyOfBuilder name(String name) {
       return (CopyOfBuilder) super.name(name);
+    }
+    
+    @Override
+     public CopyOfBuilder productImageS3Key(String productImageS3Key) {
+      return (CopyOfBuilder) super.productImageS3Key(productImageS3Key);
     }
   }
   

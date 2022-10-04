@@ -17,6 +17,11 @@ import com.amplifyframework.auth.AuthUser;
 import com.amplifyframework.core.Amplify;
 import com.zork.zork_demo.R;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 public class MainActivity extends AppCompatActivity {
     public static final String DATABASE_NAME = "zork_game_db";
@@ -31,49 +36,36 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         currentUser = Amplify.Auth.getCurrentUser();
 
+        // manual upload to S3
+        // Manually create an S3 file for testing
 
-        // Hardcode signup
-//        Amplify.Auth.signUp("alex.white@codefellows.com",
-//                "p@ssw0rd",  // Cognito's default password policy is 8 characters, no other requirements
-//                AuthSignUpOptions.builder()
-//                        .userAttribute(AuthUserAttributeKey.email(), "alex.white@codefellows.com")
-//                        .userAttribute(AuthUserAttributeKey.nickname(), "Firefly")
-//                        .build(),
-//                success -> Log.i(TAG, "Signup success! " + success),
-//                failure -> Log.i(TAG,"Signup failed with username " + "alex.white@codefellows.com" + "with message: " + failure)
-//                );
-
-        // User verify
-//            Amplify.Auth.confirmSignUp("alex.white@codefellows.com",
-//                    "147600",
-//                    success -> Log.i(TAG, "Verification succeeded: " + success),
-//                    failure -> Log.i(TAG, "Verification Failed: " + failure)
-//                    );
-        // user Login
-//            Amplify.Auth.signIn("alex.white@codefellows.com",
-//                        "p@ssw0rd",
-//                    success -> Log.i(TAG, "Login succeeded: " + success.toString()),
-//                    failure -> Log.i(TAG, "Login failed: " + failure.toString())
-//                    );
+//        String testFilename = "testFileName";
+//        File testFile = new File(getApplicationContext().getFilesDir(), testFilename);
 //
-//        Amplify.Auth.fetchAuthSession(
-//                result -> Log.i("AmplifyQuickstart", result.toString()),
-//                error -> Log.e("AmplifyQuickstart", error.toString())
-//        );
-
-        // LOGOUT
-//        Amplify.Auth.signOut(
-//                () ->
+//        try
+//        {
+//            BufferedWriter testFileBufferedWriter = new BufferedWriter(new FileWriter(testFile));
+//            testFileBufferedWriter.append("Some test text here\nAnother line of test text");
+//            testFileBufferedWriter.close();  // Make sure to do this or the text may not be saved!
+//        } catch (IOException ioe)
+//        {
+//            Log.e(TAG, "Could not write file locally with filename: " + testFilename);
+//        }
+//
+//        String testFileS3Key = "someFileOnS3.txt";
+//
+//        Amplify.Storage.uploadFile(
+//                testFileS3Key,
+//                testFile,
+//                success ->
 //                {
-//                    Log.i(TAG, "Logout succeeded!");
+//                    Log.i(TAG, "S3 upload succeeded! Key is: " + success.getKey());
 //                },
 //                failure ->
 //                {
-//                    Log.i(TAG, "Logout failed: " + failure.toString());
+//                    Log.i(TAG, "S3 upload failed! " + failure.getMessage());
 //                }
 //        );
-
-
 
         // initiliaze SP
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -83,6 +75,15 @@ public class MainActivity extends AppCompatActivity {
         setUpPokemanBttn();
         setUpAddAPokemanBttn();
         setUpLoginSignUpBttns();
+        setUpImageBttn();
+    }
+
+
+    private void setUpImageBttn(){
+        findViewById(R.id.MainAddSFBImageBttn).setOnClickListener(v -> {
+            Intent goToAddImageActivity = new Intent(MainActivity.this, ImageSuperFurBoyActivity.class);
+            startActivity(goToAddImageActivity);
+        });
     }
 
     @Override

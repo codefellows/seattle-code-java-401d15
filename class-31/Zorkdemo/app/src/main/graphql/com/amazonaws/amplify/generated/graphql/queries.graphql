@@ -3,6 +3,7 @@ query GetTrainer($id: ID!) {
   getTrainer(id: $id) {
     id
     name
+    productImageS3Key
     superFurBoys {
       items {
         id
@@ -28,6 +29,7 @@ query ListTrainers(
     items {
       id
       name
+      productImageS3Key
       superFurBoys {
         nextToken
       }
@@ -47,6 +49,7 @@ query GetSuperFurBoy($id: ID!) {
     trainer {
       id
       name
+      productImageS3Key
       superFurBoys {
         nextToken
       }
@@ -72,6 +75,7 @@ query ListSuperFurBoys(
       trainer {
         id
         name
+        productImageS3Key
         createdAt
         updatedAt
       }

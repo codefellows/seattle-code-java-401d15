@@ -3,6 +3,7 @@ subscription OnCreateTrainer {
   onCreateTrainer {
     id
     name
+    productImageS3Key
     superFurBoys {
       items {
         id
@@ -23,6 +24,7 @@ subscription OnUpdateTrainer {
   onUpdateTrainer {
     id
     name
+    productImageS3Key
     superFurBoys {
       items {
         id
@@ -43,6 +45,7 @@ subscription OnDeleteTrainer {
   onDeleteTrainer {
     id
     name
+    productImageS3Key
     superFurBoys {
       items {
         id
@@ -69,6 +72,7 @@ subscription OnCreateSuperFurBoy {
     trainer {
       id
       name
+      productImageS3Key
       superFurBoys {
         nextToken
       }
@@ -89,6 +93,7 @@ subscription OnUpdateSuperFurBoy {
     trainer {
       id
       name
+      productImageS3Key
       superFurBoys {
         nextToken
       }
@@ -109,6 +114,7 @@ subscription OnDeleteSuperFurBoy {
     trainer {
       id
       name
+      productImageS3Key
       superFurBoys {
         nextToken
       }
