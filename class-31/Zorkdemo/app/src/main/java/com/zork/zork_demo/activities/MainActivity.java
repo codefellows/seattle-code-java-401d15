@@ -36,36 +36,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         currentUser = Amplify.Auth.getCurrentUser();
 
-        // manual upload to S3
-        // Manually create an S3 file for testing
 
-//        String testFilename = "testFileName";
-//        File testFile = new File(getApplicationContext().getFilesDir(), testFilename);
-//
-//        try
-//        {
-//            BufferedWriter testFileBufferedWriter = new BufferedWriter(new FileWriter(testFile));
-//            testFileBufferedWriter.append("Some test text here\nAnother line of test text");
-//            testFileBufferedWriter.close();  // Make sure to do this or the text may not be saved!
-//        } catch (IOException ioe)
-//        {
-//            Log.e(TAG, "Could not write file locally with filename: " + testFilename);
-//        }
-//
-//        String testFileS3Key = "someFileOnS3.txt";
-//
-//        Amplify.Storage.uploadFile(
-//                testFileS3Key,
-//                testFile,
-//                success ->
-//                {
-//                    Log.i(TAG, "S3 upload succeeded! Key is: " + success.getKey());
-//                },
-//                failure ->
-//                {
-//                    Log.i(TAG, "S3 upload failed! " + failure.getMessage());
-//                }
-//        );
 
         // initiliaze SP
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
