@@ -1,8 +1,12 @@
 package com.zork.zork_demo.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
@@ -13,6 +17,12 @@ import android.widget.Spinner;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.location.Priority;
+import com.google.android.gms.tasks.CancellationToken;
+import com.google.android.gms.tasks.OnTokenCanceledListener;
 import com.zork.zork_demo.R;
 import com.amplifyframework.datastore.generated.model.*;
 
@@ -27,6 +37,8 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
 
     Spinner trainerSpinner = null;
     CompletableFuture<List<Trainer>> trainerFuture = null;
+    //TODO: Step 1: create the location client
+    private FusedLocationProviderClient fusedLocationClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +46,61 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_super_fur_boy);
         trainerFuture = new CompletableFuture<>();
 
+        //TODO: Step2: setup locationClient && request permissions
+        requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 1);  // hardcoded to 1; you can pick anything between 1 and 65535
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(getApplicationContext());
+        fusedLocationClient.flushLocations();
+
+//        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+//            // TODO: Consider calling
+//            //    ActivityCompat#requestPermissions
+//            // here to request the missing permissions, and then overriding
+//            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+//            //                                          int[] grantResults)
+//            // to handle the case where the user grants the permission. See the documentation
+//            // for ActivityCompat#requestPermissions for more details.
+//            return;
+//        }
+//
+//        fusedLocationClient.getLastLocation().addOnSuccessListener(location -> { // "location" here could be null if no one else has request a location prior!
+//            // Try running Google Maps first and clicking your current location if you have a null callback here, or a null object error when getting the location!
+//           if(location == null) {
+//               Log.e(Tag, "Location callback was null!");
+//           }
+//           String currentLatitude = Double.toString(location.getLatitude());
+//           String currentLongitude = Double.toString(location.getLongitude());
+//           Log.i(Tag, "Our latitude: " + location.getLatitude());
+//           Log.i(Tag, "Our longitude: " + location.getLongitude());
+//        });
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            // TODO: Consider calling
+            //    ActivityCompat#requestPermissions
+            // here to request the missing permissions, and then overriding
+            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+            //                                          int[] grantResults)
+            // to handle the case where the user grants the permission. See the documentation
+            // for ActivityCompat#requestPermissions for more details.
+            return;
+        }
+        fusedLocationClient.getCurrentLocation(Priority.PRIORITY_HIGH_ACCURACY, new CancellationToken() {
+            @NonNull
+            @Override
+            public CancellationToken onCanceledRequested(@NonNull OnTokenCanceledListener onTokenCanceledListener) {
+                return null;
+            }
+
+            @Override
+            public boolean isCancellationRequested() {
+                return false;
+            }
+        }).addOnSuccessListener(location -> {
+            if(location == null) {
+               Log.e(Tag, "Location callback was null!");
+           }
+           Log.i(Tag, "Our latitude: " + location.getLatitude());
+           Log.i(Tag, "Our longitude: " + location.getLongitude());
+        });
 
         setUpTypeSpinner();
         setUpTrainerSpinner();
