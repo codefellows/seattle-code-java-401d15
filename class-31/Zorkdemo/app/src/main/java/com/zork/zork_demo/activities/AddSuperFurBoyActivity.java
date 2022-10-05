@@ -18,7 +18,6 @@ import com.amplifyframework.datastore.generated.model.*;
 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
@@ -55,12 +54,10 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
                         trainerNames.add(trainer.getName());
                     }
                     trainerFuture.complete(trainers);
-                    runOnUiThread(() -> {
-                        trainerSpinner.setAdapter(new ArrayAdapter<>(
-                                this,
-                                android.R.layout.simple_spinner_item,
-                                trainerNames));
-                    });
+                    runOnUiThread(() -> trainerSpinner.setAdapter(new ArrayAdapter<>(
+                            this,
+                            android.R.layout.simple_spinner_item,
+                            trainerNames)));
                 },
                 failure -> {
                     trainerFuture.complete(null); // Don't forget to complete a CompletableFuture on every code path!
@@ -98,8 +95,6 @@ public class AddSuperFurBoyActivity extends AppCompatActivity {
             String superFurBoyName = ((EditText) findViewById(R.id.AddSuperFurBoyNameET)).getText().toString();
             String superFurBoyHeight = ((EditText) findViewById(R.id.AddSuperFurBoyHeightET)).getText().toString();
             Integer height = Integer.parseInt(superFurBoyHeight);
-        // create a new date object
-            String currentDateString = com.amazonaws.util.DateUtils.formatISO8601Date(new Date());
 
         // create a new SuperFurBoy Obj
             SuperFurBoy newSuperFurBoy = SuperFurBoy.builder()
