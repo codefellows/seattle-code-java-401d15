@@ -10,7 +10,7 @@
             "authenticationType": "API_KEY",
             "apiKeyConfig": {
               "apiKeyExpirationDays": 7,
-              "apiKeyExpirationDate": "2022-10-11T18:38:48.228Z",
+              "apiKeyExpirationDate": "2022-10-17T18:51:46.951Z",
               "description": ""
             }
           },
@@ -52,6 +52,13 @@
       "service": "S3",
       "providerPlugin": "awscloudformation",
       "dependsOn": []
+    }
+  },
+  "predictions": {
+    "speechGenerator356a51a5": {
+      "providerPlugin": "awscloudformation",
+      "service": "Polly",
+      "convertType": "speechGenerator"
     }
   }
 }
